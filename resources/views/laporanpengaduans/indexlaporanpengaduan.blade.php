@@ -18,7 +18,6 @@
                     <th style="width: 10px">No</th>
                     <th style="width: 10px">Nama</th>
                     <th>Tanggal</th>
-                    <th>Pengirim</th>
                     <th>Judul</th>
                     <th>Pengaduan</th>
                     <th>Tempat Kejadian</th>
@@ -28,11 +27,11 @@
                     @foreach ($pengaduans as $pengaduan)
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengaduan->name}}</td>
-                        <td>{{$pengaduan->created_at}}</td>
+                        <td>{{$pengaduan->format('Y-m-d')}}</td>
                         <td>{{$pengaduan->judul}}</td>
                         <td>{{$pengaduan->pengaduan}}</td>
                         <td>{{$pengaduan->tempat}}</td>
-                        <td>{{$pengaduan->foto}}</td>
+                        <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width="50%"></td>
                     @endforeach
                   </tr>
                 </table>
