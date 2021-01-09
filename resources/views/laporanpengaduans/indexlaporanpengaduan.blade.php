@@ -27,7 +27,8 @@
                     @foreach ($pengaduans as $pengaduan)
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengaduan->name}}</td>
-                        <td>{{$pengaduan->created_at->format('Y-m-d')}}</td>
+                        {{-- <td>{{$pengaduan->created_at->format('Y-m-d')}}</td> --}}
+                        <td>{{date('d-m-Y', strtotime($pengaduan->created_at));}}</td>
                         <td>{{$pengaduan->judul}}</td>
                         <td>{{$pengaduan->pengaduan}}</td>
                         <td>{{$pengaduan->tempat}}</td>
