@@ -32,7 +32,7 @@
                         <td>{{$pengaduan->judul}}</td>
                         <td>{{$pengaduan->pengaduan}}</td>
                         <td>{{$pengaduan->tempat}}</td>
-                        <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width=""></td>
+                        <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width="50%"></td>
                     @endforeach
                   </tr>
                 </table>
