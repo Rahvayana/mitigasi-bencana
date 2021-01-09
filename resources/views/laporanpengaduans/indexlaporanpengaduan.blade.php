@@ -15,24 +15,25 @@
               <div class="box-body">
                 <table class="table table-bordered">
                   <tr>
-                    <th style="width: 10px">ID</th>
+                    <th style="width: 10px">No</th>
+                    <th style="width: 10px">Nama</th>
                     <th>Tanggal</th>
                     <th>Pengirim</th>
                     <th>Judul</th>
                     <th>Pengaduan</th>
                     <th>Tempat Kejadian</th>
                     <th>Foto</th>
-                    <th style="width: 40px">Action</th>
                   </tr>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    @foreach ($pengaduans as $pengaduan)
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$pengaduan->name}}</td>
+                        <td>{{$pengaduan->created_at}}</td>
+                        <td>{{$pengaduan->judul}}</td>
+                        <td>{{$pengaduan->pengaduan}}</td>
+                        <td>{{$pengaduan->tempat}}</td>
+                        <td>{{$pengaduan->foto}}</td>
+                    @endforeach
                   </tr>
                 </table>
               </div><!-- /.box-body -->

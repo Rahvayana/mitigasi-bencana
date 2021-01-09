@@ -5,6 +5,7 @@ use App\Http\Controllers\SopController;
 use App\Http\Controllers\DatabencanaController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\LaporanpengaduanController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/laporanpengaduans', function () {
-    return view('laporanpengaduans/indexlaporanpengaduan');
+    $data['pengaduans']=DB::table('pengaduans')->select('pengaduans.*','users.name')->get();
+    return view('laporanpengaduans/indexlaporanpengaduan',$data);
 })->name('laporanpengaduans');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/datausers', function () {
