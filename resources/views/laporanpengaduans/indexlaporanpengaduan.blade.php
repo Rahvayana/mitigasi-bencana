@@ -27,11 +27,11 @@
                     @foreach ($pengaduans as $pengaduan)
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengaduan->name}}</td>
-                        <td>{{$pengaduan->format('Y-m-d')}}</td>
+                        <td>{{$pengaduan->created_at->format('Y-m-d')}}</td>
                         <td>{{$pengaduan->judul}}</td>
                         <td>{{$pengaduan->pengaduan}}</td>
                         <td>{{$pengaduan->tempat}}</td>
-                        <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width="50%"></td>
+                        <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width=""></td>
                     @endforeach
                   </tr>
                 </table>
