@@ -28,7 +28,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/laporanpengaduans', function () {
-    $data['pengaduans']=DB::table('pengaduans')->select('pengaduans.*','users.name')->get();
+    $data['pengaduans']=DB::table('pengaduans')->select('pengaduans.*','users.name')
+    ->leftJoin('users','users.id','pengaduans.id_user')->get();
     return view('laporanpengaduans/indexlaporanpengaduan',$data);
 })->name('laporanpengaduans');
 
