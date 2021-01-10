@@ -10,6 +10,7 @@ class SopController extends Controller
     public function index2()
     {
         $data['menus2']=DB::table('sopbencanas')->get();
+        // dd($data);
         return view('menus2.index2',$data);
     }
 

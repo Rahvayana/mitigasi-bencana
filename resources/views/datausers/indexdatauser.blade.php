@@ -19,21 +19,15 @@
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Username</th>
-                    <th>Password</th>
-                    <th>Alamat</th>
-                    <th>Foto</th>
-                    <th style="width: 40px">Action</th>
                   </tr>
+                  @foreach ($users as $user)
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$user->NIK}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->username}}</td>
                   </tr>
+                  @endforeach
                 </table>
               </div><!-- /.box-body -->
               <div class="box-footer clearfix">

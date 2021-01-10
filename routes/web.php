@@ -5,6 +5,7 @@ use App\Http\Controllers\SopController;
 use App\Http\Controllers\DatabencanaController;
 use App\Http\Controllers\KuisController;
 use App\Http\Controllers\LaporanpengaduanController;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +39,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/datausers', function () {
 })->name('datausers');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/menus2', function () {
-    return view('menus2/index2');
+    $data['users']=DB::table('users')->whereNotNull('NIK')->get();
+    // dd($data);
+    return view('datausers/indexdatauser',$data);
 })->name('datausers');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
