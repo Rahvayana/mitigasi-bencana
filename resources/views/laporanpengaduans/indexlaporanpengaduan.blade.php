@@ -23,8 +23,8 @@
                     <th>Tempat Kejadian</th>
                     <th>Foto</th>
                   </tr>
+                  @foreach ($pengaduans as $pengaduan)
                   <tr>
-                    @foreach ($pengaduans as $pengaduan)
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengaduan->name}}</td>
                         {{-- <td>{{$pengaduan->created_at->format('Y-m-d')}}</td> --}}
@@ -33,8 +33,8 @@
                         <td>{{$pengaduan->pengaduan}}</td>
                         <td>{{$pengaduan->tempat}}</td>
                         <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width="50%"></td>
+                      </tr>
                     @endforeach
-                  </tr>
                 </table>
               </div><!-- /.box-body -->
               <div class="box-footer clearfix">
