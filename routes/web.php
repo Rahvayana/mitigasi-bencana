@@ -33,6 +33,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/laporanpengaduans', funct
     ->leftJoin('users','users.id','pengaduans.id_user')->get();
     return view('laporanpengaduans/indexlaporanpengaduan',$data);
 })->name('laporanpengaduans');
+Route::middleware(['auth:sanctum', 'verified'])->get('/detailpengaduans/{id}', function ($id) {
+    $data['pengaduan']=DB::table('pengaduans')->select('pengaduans.*','users.name')
+    ->leftJoin('users','users.id','pengaduans.id_user')
+    ->where('pengaduans.id',$id)
+    ->first();
+    return view('laporanpengaduans/detail',$data);
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/datausers', function () {
     return view('datausers/indexdatauser');

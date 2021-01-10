@@ -22,6 +22,7 @@
                     <th>Pengaduan</th>
                     <th>Tempat Kejadian</th>
                     <th>Foto</th>
+                    <th>Action</th>
                   </tr>
                   @foreach ($pengaduans as $pengaduan)
                   <tr>
@@ -33,6 +34,7 @@
                         <td>{{$pengaduan->pengaduan}}</td>
                         <td>{{$pengaduan->tempat}}</td>
                         <td><img src="{{$pengaduan->foto}}" alt="" srcset="" width="50%"></td>
+                        <td><a href="/detailpengaduans/{{$pengaduan->id}}"><button class="btn btn-success">Detail</button></a></td>
                       </tr>
                     @endforeach
                 </table>
