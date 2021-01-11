@@ -29,8 +29,13 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$galeri->namagaleri}}</td>
                     <td>{{$galeri->keterangan}}</td>
-                    <td><img src="images/galeris/{{$galeri->gambar}}" alt="" srcset="" style="width: 50%"></td>
-                    <td style="display: flex"><a href="{{ route('editgaleri', $galeri->id) }}"><span class="badge bg-blue"><i class="fa fa-edit"></i></span></a> &nbsp;<a href="#" data-toggle="modal" data-record-id="{{ $galeri->id }}" data-target="#confirm-delete"><span class="badge bg-red"><i class="fa fa-trash-o"></i></span></a></td>
+                    @if ($galeri->type=='1')
+                    <td><img src="{{$galeri->gambar}}" alt="" srcset="" style="width: 30%"></td>
+                    @else
+                    <td><video src="{{$galeri->gambar}}" controls></video></td>
+                    @endif
+                    {{-- <td style="display: flex"><a href="{{ route('editgaleri', $galeri->id) }}"><span class="badge bg-blue"><i class="fa fa-edit"></i></span></a> &nbsp;<a href="#" data-toggle="modal" data-record-id="{{ $galeri->id }}" data-target="#confirm-delete"><span class="badge bg-red"><i class="fa fa-trash-o"></i></span></a></td> --}}
+                    <td style="display: flex"><a href="#" data-toggle="modal" data-record-id="{{ $galeri->id }}" data-target="#confirm-delete"><span class="badge bg-red"><i class="fa fa-trash-o"></i></span></a></td>
                   </tr>
                   @endforeach
                 </table>

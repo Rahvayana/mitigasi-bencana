@@ -28,6 +28,14 @@
                     <input name="keterangan" type="text" class="form-control" id="keterangan" placeholder="Masukkan Keterangan">
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputPassword1">Tipe</label>
+                    <select name="type" id="type" class="form-control" required>
+                      <option value="">Pilih Tipe</option>
+                      <option value="1">Gambar</option>
+                      <option value="2">Video</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputPassword1">Gambar</label>
                     <input name="gambar" type="file" class="form-control" id="gambar" placeholder="Masukkan Gambar">
                   </div>

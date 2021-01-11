@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class GaleriController extends Controller
 {
@@ -20,19 +22,34 @@ class GaleriController extends Controller
 
     public function storegaleri(Request $request)
     {
+        // dd($request);
         $validatedData = $request->validate([
             'namagaleri' => 'required',
             'keterangan' => 'required',
             'gambar' => 'required',
         ]);
-        $file=$request->file('gambar');
-        $namefile=date('YmdHis').".".$file->getClientOriginalExtension();
-        $file->move('images/galeris',$namefile);
+        $image = $request->file('gambar');
+        if(!$request->type=='2'){
+            $input['imagename'] = time().'.'.$image->extension();
+            $normal = Image::make($image)->resize(512, 512)->encode($image->extension());
+            Storage::disk('s3')->put('/images/'.$input['imagename'], (string)$normal, 'public');
+        }else{
+            $input['imagename'] = time().'.'.$image->extension();
+            // dd($image);
+            $data= Storage::disk('s3')->put('/images/'.$input['imagename'],$image, 'public');
+        }
+
+        if($request->type=='1'){
+            $namaFile="https://lizartku.s3.us-east-2.amazonaws.com/images/".$input['imagename'];
+        }else{
+            $namaFile="https://lizartku.s3.us-east-2.amazonaws.com/".$data;
+        }
 
         DB::table('galeris')->insert([
             'namagaleri' => $request->namagaleri,
             'keterangan' => $request->keterangan,
-            'gambar' => $namefile,
+            'type' => $request->type,
+            'gambar' => $namaFile,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             ]);
@@ -47,14 +64,15 @@ class GaleriController extends Controller
 
     public function updategaleri(Request $request,$id)
     {
-        $file=$request->file('gambar');
-        $namefile=date('YmdHis').".".$file->getClientOriginalExtension();
-        $file->move('images/galeris',$namefile);
+        $image = $request->file('gambar');
+        $input['imagename'] = time().'.'.$image->extension();
+        $normal = Image::make($image)->resize(512, 512)->encode($image->extension());
+        Storage::disk('s3')->put('/images/'.$input['imagename'], (string)$normal, 'public');
 
         DB::table('galeris')->where('id',$id)->update([
             'namagaleri' => $request->namagaleri,
             'keterangan' => $request->keterangan,
-            'gambar' => $namefile,
+            'gambar' =>"https://lizartku.s3.us-east-2.amazonaws.com/images/".$input['imagename'],
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
         return redirect()->route('galeris');

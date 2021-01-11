@@ -16,7 +16,10 @@
         "laravel/jetstream": "^1.6",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.0"
+        "livewire/livewire": "^2.0",
+        "ext-gd": "^7.4",
+        "league/flysystem-aws-s3-v3": "1.0.29",
+        "intervention/image": "^2.5"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
