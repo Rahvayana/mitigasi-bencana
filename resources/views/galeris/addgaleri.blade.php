@@ -36,6 +36,14 @@
                     </select>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputPassword1">Bencana</label>
+                    <select name="bencana" id="bencana" class="form-control" required>
+                      <option value="">Pilih Tipe</option>
+                      <option value="1">Banjir</option>
+                      <option value="2">Kekeringan</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputPassword1">Gambar</label>
                     <input name="gambar" type="file" class="form-control" id="gambar" placeholder="Masukkan Gambar">
                   </div>

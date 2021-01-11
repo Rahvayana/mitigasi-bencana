@@ -41,6 +41,7 @@ class GaleriController extends Controller
         DB::table('galeris')->insert([
             'namagaleri' => $request->namagaleri,
             'keterangan' => $request->keterangan,
+            'bencana' => $request->bencana,
             'type' => $request->type,
             'gambar' => "https://lizartku.s3.us-east-2.amazonaws.com/".$data,
             'created_at' => date('Y-m-d H:i:s'),
