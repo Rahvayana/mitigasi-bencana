@@ -32,24 +32,17 @@ class GaleriController extends Controller
         if(!$request->type=='2'){
             $input['imagename'] = time().'.'.$image->extension();
             $normal = Image::make($image)->resize(512, 512)->encode($image->extension());
-            Storage::disk('s3')->put('/images/'.$input['imagename'], (string)$normal, 'public');
+            $data=Storage::disk('s3')->put('/images/'.$input['imagename'], (string)$normal, 'public');
         }else{
             $input['imagename'] = time().'.'.$image->extension();
-            // dd($image);
             $data= Storage::disk('s3')->put('/images/'.$input['imagename'],$image, 'public');
-        }
-
-        if($request->type=='1'){
-            $namaFile="https://lizartku.s3.us-east-2.amazonaws.com/images/".$input['imagename'];
-        }else{
-            $namaFile="https://lizartku.s3.us-east-2.amazonaws.com/".$data;
         }
 
         DB::table('galeris')->insert([
             'namagaleri' => $request->namagaleri,
             'keterangan' => $request->keterangan,
             'type' => $request->type,
-            'gambar' => $namaFile,
+            'gambar' => "https://lizartku.s3.us-east-2.amazonaws.com/".$data,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             ]);
