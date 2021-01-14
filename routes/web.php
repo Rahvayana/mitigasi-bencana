@@ -62,7 +62,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('sopbencana',[SopController::class,'index'])->name('menus2');
     Route::get('addsop',[SopController::class,'addsop'])->name('addsop');
     Route::post('storesop',[SopController::class,'storesop'])->name('storesop');
-    Route::get('editsop/{id}',[SopController::class,'editsop'])->name('editsop');
+    // Route::get('editsopKu/{id}',[SopController::class,'editsop'])->name('editsop');
+    Route::get('editSop/{id}',[SopController::class,'editsop'])->name('editsop');
     Route::post('updatesop/{id}',[SopController::class,'updatesop'])->name('updatesop');
     Route::post('deletesop/{id}',[SopController::class,'deletesop'])->name('deletesop');
     Route::get('menu2',[SopController::class,'index2'])->name('menus2');
