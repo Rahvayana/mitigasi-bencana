@@ -19,7 +19,6 @@
                 <table class="table table-bordered">
                   <tr>
                     <th style="width: 10px">No</th>
-                    <th>ID</th>
                     <th>Nama SOP</th>
                     <th>Keterangan</th>
                     <th>Gambar</th>
@@ -28,7 +27,6 @@
                   @foreach ($menus2 as $sopbencana)
                   <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$sopbencana->id}}</td>
                     <td>{{$sopbencana->namasopbencana}}</td>
                     <td>{{$sopbencana->keterangan}}</td>
                     <td><img src="images/sop/{{$sopbencana->gambar}}" alt="" srcset="" style="width: 50%"></td>
